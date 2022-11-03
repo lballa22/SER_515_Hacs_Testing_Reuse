@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="SER_515_Hacs_Testing_Reuse" />
         <module name="Hacs_Test_Reuse" />
       </profile>
     </annotationProcessing>
