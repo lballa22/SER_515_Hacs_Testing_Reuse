@@ -1,126 +1,122 @@
-package hacs;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Iterator;
-
-
 /**
- * Title:        HACS
- * Description:
- * Copyright:    Copyright (c) 2002
- * Company:      msu
+ * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
+ *
  * @author Zhang ji Zhu Wei
  * @version 1.0
  */
 
-abstract public class CourseMenu extends JDialog
-{
-  Course theCourse;
-  boolean bLogout=true;
+package hacs;
 
-  JRadioButton AssignmentRadiao = new JRadioButton();
-  JComboBox AssignmentCombox = new JComboBox();
-  JButton AssignmentViewButton = new JButton();
-  JButton AssignmentAddButton = new JButton();
-  JRadioButton OptionRadio = new JRadioButton();
-  JLabel AssignmentContentLable = new JLabel();
-  JComboBox OptionCombo = new JComboBox();
-  JButton OptionViewButton = new JButton();
-  JButton OptionAddButton = new JButton();
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.util.Iterator;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+
+abstract public class CourseMenu extends JDialog {
+
+  private static final long serialVersionUID = 1L;
+  Course theCourse;
+  boolean bLogout = true;
+
+  JRadioButton assignmentRadio = new JRadioButton();
+  JComboBox<Object> assignmentCombox = new JComboBox<Object>();
+  JButton assignmentViewButton = new JButton();
+  JButton assignmentAddButton = new JButton();
+  JRadioButton optionRadio = new JRadioButton();
+  JLabel assignmentContentLable = new JLabel();
+  JComboBox<Object> optionCombo = new JComboBox<Object>();
+  JButton optionViewButton = new JButton();
+  JButton optionAddButton = new JButton();
   JButton buttonChangeCourse = new JButton();
   JButton buttonLogout = new JButton();
 
-  public CourseMenu()
-  {
-
-    try
-    {
+  public CourseMenu() {
+    try {
       jbInit();
-    }
-    catch(Exception e)
-    {
+    } catch (Exception e) {
       e.printStackTrace();
     }
     setModal(true);
-    setSize(503,294);
+    setSize(503, 294);
   }
 
-  private void jbInit() throws Exception
-  {
+  private void jbInit() throws Exception {
     buttonChangeCourse.setText("ChangeCourse");
     buttonChangeCourse.setBounds(new Rectangle(101, 211, 73, 37));
-    buttonChangeCourse.addActionListener(new java.awt.event.ActionListener()
-    {
-      public void actionPerformed(ActionEvent e)
-      {
-        buttonChangeCourse_actionPerformed(e);
+    buttonChangeCourse.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        buttonChangeCourseActionPerformed(e);
       }
     });
     this.getContentPane().setLayout(null);
     this.setTitle("");
     buttonLogout.setText("Logout");
     buttonLogout.setBounds(new Rectangle(267, 215, 73, 37));
-    buttonLogout.addActionListener(new java.awt.event.ActionListener()
-    {
-      public void actionPerformed(ActionEvent e)
-      {
-        buttonLogout_actionPerformed(e);
+    buttonLogout.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        buttonLogoutActionPerformed(e);
       }
     });
     this.getContentPane().add(buttonChangeCourse, null);
     this.getContentPane().add(buttonLogout, null);
   }
 
-  /* when the add button is pressed, call add assignment
-  function of facade, after that refresh window
-  */
+  /*
+   * when the add button is pressed, call add assignment function of facade, after
+   * that refresh window
+   */
 
-  /* when the add button is pressed, call ViewAssignment
-  function of facade, after that refresh window
-  */
+  /*
+   * when the add button is pressed, call ViewAssignment function of facade, after
+   * that refresh window
+   */
 
-  abstract void ShowMenu(Course theCourse);
-  abstract void ShowAddButtons();
-  abstract void ShowViewButtons();
-  abstract void ShowRadios();
-  abstract void ShowComboxes();
-  abstract void ShowLabel();
+  abstract void showMenu(Course theCourse);
 
-  void AssignmentAddButton_actionPerformed(ActionEvent e)
-  {
-    Hacs.theFacade.AddAssignment(theCourse);
+  abstract void showAddButtons();
+
+  abstract void showViewButtons();
+
+  abstract void showRadios();
+
+  abstract void showComboxes();
+
+  abstract void showLabel();
+
+  void assignmentAddButtonActionPerformed(ActionEvent e) {
+    Hacs.theFacade.addAssignment(theCourse);
     refresh();
   }
-  void AssignmentViewButton_actionPerformed(ActionEvent e)
-  {
-    Assignment theAss=(Assignment)AssignmentCombox.getSelectedItem() ;
-    Hacs.theFacade.ViewAssignment(theAss);
+
+  void assignmentViewButtonActionPerformed(ActionEvent e) {
+    Assignment theAss = (Assignment) assignmentCombox.getSelectedItem();
+    Hacs.theFacade.viewAssignment(theAss);
   }
-  void refresh()
-  {
-    AssignmentCombox.removeAllItems() ;
-    Iterator Iter=theCourse.assignmentList.iterator() ;
-    while(Iter.hasNext() )
-    {
-      AssignmentCombox.addItem(Iter.next() );
+
+  void refresh() {
+    assignmentCombox.removeAllItems();
+    Iterator<?> Iter = theCourse.assignmentList.iterator();
+    while (Iter.hasNext()) {
+      assignmentCombox.addItem(Iter.next());
     }
   }
 
-  void buttonChangeCourse_actionPerformed(ActionEvent e)
-  {
-    bLogout=false;
-    hide();
+  void buttonChangeCourseActionPerformed(ActionEvent e) {
+    bLogout = false;
+    setVisible(false);
   }
 
-  void buttonLogout_actionPerformed(ActionEvent e)
-  {
-    bLogout=true;
-    hide();
+  void buttonLogoutActionPerformed(ActionEvent e) {
+    bLogout = true;
+    setVisible(true);
   }
-  boolean ifLogout()
-  {
+
+  boolean ifLogout() {
     return bLogout;
   }
 }

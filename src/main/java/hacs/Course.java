@@ -1,48 +1,51 @@
-package hacs;
-
-import java.util.*;
-
 /**
- * Title:        HACS
- * Description:  CSE870 Homework 3:  Implementing Design Patterns
- * Copyright:    Copyright (c) 2002
- * Company:      Department of Computer Science and Engineering, Michigan State University
+ * Title: HACS Description: CSE870 Homework 3: Implementing Design Patterns
+ * Copyright: Copyright (c) 2002 Company: Department of Computer Science and
+ * Engineering, Michigan State University
+ *
  * @author Ji Zhang, Wei Zhu
  * @version 1.0
  * @author mjfindler
- * @version 2.0 
- * Update to Java 8
+ * @version 2.0 Update to Java 8
  */
 
-public class Course {
-  String CourseName;
-  public ArrayList<Assignment> assignmentList=new ArrayList<Assignment>();
-  int NumOfAss;
-  int CourseLevel;
+package hacs;
 
+import java.util.ArrayList;
+
+public class Course {
+  String courseName;
+  public ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
+  int numberOfAssignment;
+  int courseLevel;
+  boolean isAccept = false;
+
+  public boolean isTrue() {
+    return isAccept;
+  }
 
   public Course(String strCourse, int theLevel) {
-    this.CourseName = strCourse;
+    this.courseName = strCourse;
+    // 0 HighLeve presentation 1 LowLevel Experiment
+    this.courseLevel = theLevel;
+    this.numberOfAssignment = 0;
+  }
 
-   //0 HighLeve presentation    1  LowLevel Experiment
-    this.CourseLevel = theLevel;
-   // this.AssList = NULL;
-    this.NumOfAss = 0;
+  public int getCourseLevel() {
+    return courseLevel;
   }
-  
-  public void AddAssignment(Assignment newAss)
-  {
-    assignmentList.add(newAss);
+
+  public void addAssignment(Assignment newAssignment) {
+    assignmentList.add(newAssignment);
   }
-  
-  public String toString()
-  {
-    return CourseName;
+
+  public String toString() {
+    return courseName;
   }
-  
-  void accept(NodeVisitor visitor)
-  {
+
+  void accept(NodeVisitor visitor) {
     visitor.visitCourse(this);
+    isAccept = true;
   }
 
 }
