@@ -36,7 +36,7 @@ class FacadeTest {
     @Test
     void testCreateUser() {
         UserInfoItem userInfoItem = new UserInfoItem();
-        userInfoItem.userType = UserInfoItem.UserType.Student;
+        userInfoItem.userType = UserInfoItem.UserType.STUDENT;
         facade.createUser(userInfoItem);
         assertTrue(facade.thePerson instanceof Student);
     }
@@ -54,7 +54,7 @@ class FacadeTest {
     void testAttachCourseToUser() {
         int value = 2;
         UserInfoItem userInfoItem = new UserInfoItem();
-        userInfoItem.userType = UserInfoItem.UserType.Student;
+        userInfoItem.userType = UserInfoItem.UserType.STUDENT;
         userInfoItem.strUserName = "mimi";
         facade.createUser(userInfoItem);
         facade.createCourseList();

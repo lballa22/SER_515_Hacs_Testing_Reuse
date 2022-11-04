@@ -7,8 +7,8 @@
  * @version 1.0
  * @author mjfindler
  * @version 2.0
- *
- *          update to Java 8
+ * <p>
+ * update to Java 8
  */
 
 package hacs;
@@ -16,54 +16,54 @@ package hacs;
 import java.util.Date;
 
 public class Solution {
-	String author = "";
-	String solutionFileName = "";
-	Date submitDate = new Date();
-	int grade;
-	boolean reported = false;
+    String author = "";
+    String solutionFileName = "";
+    Date submitDate = new Date();
+    int grade;
+    boolean reported = false;
 
-	public Solution() {
+    public Solution() {
 
-	}
+    }
 
-	public String getTheAuthor() {
-		return author;
-	}
+    public String getTheAuthor() {
+        return author;
+    }
 
-	@Override
-	public String toString() {
-		String string = author + " " + solutionFileName + " Grade = " + getGradeInt();
-		if (isReported())
-			string += " reported.";
-		else
-			string += " not reported.";
-		return (string);
-	}
+    @Override
+    public String toString() {
+        String string = author + " " + solutionFileName + " Grade = " + getGradeInt();
+        if (isReported())
+            string += " reported.";
+        else
+            string += " not reported.";
+        return (string);
+    }
 
-	public void setSolutionFileName(String solutionFileName) {
-		this.solutionFileName = solutionFileName;
-	}
+    public void setSolutionFileName(String solutionFileName) {
+        this.solutionFileName = solutionFileName;
+    }
 
-	public void setTheAuthor(String author) {
-		this.author = author;
-	}
+    public void setTheAuthor(String author) {
+        this.author = author;
+    }
 
-	String getGradeString() {
-		if (isReported())
-			return "" + grade;
-		else
-			return "-1";
-	}
+    String getGradeString() {
+        if (isReported())
+            return "" + grade;
+        else
+            return "-1";
+    }
 
-	int getGradeInt() {
-		return grade;
-	}
+    int getGradeInt() {
+        return grade;
+    }
 
-	public void setReported(boolean reported) {
-		this.reported = reported;
-	}
+    public void setReported(boolean reported) {
+        this.reported = reported;
+    }
 
-	public boolean isReported() {
-		return reported;
-	}
+    public boolean isReported() {
+        return reported;
+    }
 }

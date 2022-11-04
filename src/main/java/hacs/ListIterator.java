@@ -12,38 +12,38 @@ package hacs;
 import java.util.*;
 
 public class ListIterator implements Iterator<Object> {
-	ArrayList<Object> theList;
-	int currentNumber = -1;
+    ArrayList<Object> theList;
+    int currentNumber = -1;
 
-	public ListIterator() {
+    public ListIterator() {
 
-	}
+    }
 
-	public ListIterator(ArrayList<Object> list) {
-		theList = list;
-	}
+    public ListIterator(ArrayList<Object> list) {
+        theList = list;
+    }
 
-	public ArrayList<Object> getTheList() {
-		return theList;
-	}
+    public ArrayList<Object> getTheList() {
+        return theList;
+    }
 
-	public boolean hasNext() {
-		if (currentNumber >= theList.size() - 1)
-			return false;
-		else
-			return true;
-	}
+    public boolean hasNext() {
+        if (currentNumber >= theList.size() - 1)
+            return false;
+        else
+            return true;
+    }
 
-	public Object next() {
-		if (hasNext() == true) {
-			currentNumber++;
-			return theList.get(currentNumber);
-		} else {
-			return null;
-		}
-	}
+    public Object next() {
+        if (hasNext() == true) {
+            currentNumber++;
+            return theList.get(currentNumber);
+        } else {
+            return null;
+        }
+    }
 
-	public void remove() {
-		theList.remove(currentNumber);
-	}
+    public void remove() {
+        theList.remove(currentNumber);
+    }
 }

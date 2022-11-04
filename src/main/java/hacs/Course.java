@@ -14,38 +14,38 @@ package hacs;
 import java.util.ArrayList;
 
 public class Course {
-  String courseName;
-  public ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
-  int numberOfAssignment;
-  int courseLevel;
-  boolean isAccept = false;
+    String courseName;
+    public ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
+    int numberOfAssignment;
+    int courseLevel;
+    boolean isAccept = false;
 
-  public boolean isTrue() {
-    return isAccept;
-  }
+    public boolean isTrue() {
+        return isAccept;
+    }
 
-  public Course(String strCourse, int theLevel) {
-    this.courseName = strCourse;
-    // 0 HighLeve presentation 1 LowLevel Experiment
-    this.courseLevel = theLevel;
-    this.numberOfAssignment = 0;
-  }
+    public Course(String strCourse, int theLevel) {
+        this.courseName = strCourse;
+        // 0 HighLeve presentation 1 LowLevel Experiment
+        this.courseLevel = theLevel;
+        this.numberOfAssignment = 0;
+    }
 
-  public int getCourseLevel() {
-    return courseLevel;
-  }
+    public int getCourseLevel() {
+        return courseLevel;
+    }
 
-  public void addAssignment(Assignment newAssignment) {
-    assignmentList.add(newAssignment);
-  }
+    public void addAssignment(Assignment newAssignment) {
+        assignmentList.add(newAssignment);
+    }
 
-  public String toString() {
-    return courseName;
-  }
+    public String toString() {
+        return courseName;
+    }
 
-  void accept(NodeVisitor visitor) {
-    visitor.visitCourse(this);
-    isAccept = true;
-  }
+    void accept(NodeVisitor visitor) {
+        visitor.visitCourse(this);
+        isAccept = true;
+    }
 
 }

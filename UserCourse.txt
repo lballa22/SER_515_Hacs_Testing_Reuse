@@ -2,6 +2,6 @@ mimi:SER515
 mimi:SER501
 stud2:SER515
 stud2:SER531
-Inst1:SER515
-Inst1:SER501
-Inst1:SER531
+inst1:SER515
+inst1:SER501
+inst1:SER531

@@ -5,8 +5,8 @@
  * @version 1.0
  * @author mjfindler
  * @version 2.0
- *
- *          update to Java 8
+ * <p>
+ * update to Java 8
  */
 
 package hacs;
@@ -24,54 +24,54 @@ import java.util.Iterator;
 
 public class ReminderVisitor extends NodeVisitor {
 
-	Reminder mReminder;
+    Reminder mReminder;
 
-	public ReminderVisitor() {
+    public ReminderVisitor() {
 
-	}
+    }
 
-	public ReminderVisitor(Reminder reminder) {
-		mReminder = reminder;
-	}
+    public ReminderVisitor(Reminder reminder) {
+        mReminder = reminder;
+    }
 
-	public Reminder getmReminder() {
-		return mReminder;
-	}
+    public Reminder getmReminder() {
+        return mReminder;
+    }
 
-	public void visitFacade(Facade facade) {
-		CourseIterator courseList = new CourseIterator(facade.theCourseList);
-		while (courseList.hasNext()) {
-			Course course = (Course) courseList.next();
-			course.accept(this);
-		}
-	}
+    public void visitFacade(Facade facade) {
+        CourseIterator courseList = new CourseIterator(facade.theCourseList);
+        while (courseList.hasNext()) {
+            Course course = (Course) courseList.next();
+            course.accept(this);
+        }
+    }
 
-	public void visitCourse(Course course) {
-		Iterator<Assignment> assignmentList = course.assignmentList.listIterator();
-		while (assignmentList.hasNext()) {
-			Assignment assignment = (Assignment) assignmentList.next();
-			assignment.accept(this);
-		}
-	}
+    public void visitCourse(Course course) {
+        Iterator<Assignment> assignmentList = course.assignmentList.listIterator();
+        while (assignmentList.hasNext()) {
+            Assignment assignment = (Assignment) assignmentList.next();
+            assignment.accept(this);
+        }
+    }
 
-	public void visitAssignment(Assignment assignment) {
-		Date today = new Date();
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(today);
-		int ntoday = calendar.get(Calendar.DAY_OF_YEAR);
-		calendar.setTime(assignment.dueDate);
-		int nDueDate = calendar.get(Calendar.DAY_OF_YEAR);
-		if (mReminder != null) {
-			if (nDueDate <= (ntoday + 1) && nDueDate >= ntoday) /// upcoming
-			{
-				mReminder.listUpcoming.add("today is " + today.toString() + " " + assignment.assignmentName
-						+ " Due Date is " + assignment.getDueDateString());
-			}
-			if (nDueDate < ntoday) {
-				// put to the
-				mReminder.listOverDue.add(assignment.assignmentName + " Due Date is " + assignment.getDueDateString());
-			}
-		}
-	}
+    public void visitAssignment(Assignment assignment) {
+        Date today = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+        int ntoday = calendar.get(Calendar.DAY_OF_YEAR);
+        calendar.setTime(assignment.dueDate);
+        int nDueDate = calendar.get(Calendar.DAY_OF_YEAR);
+        if (mReminder != null) {
+            if (nDueDate <= (ntoday + 1) && nDueDate >= ntoday) /// upcoming
+            {
+                mReminder.listUpcoming.add("today is " + today.toString() + " " + assignment.assignmentName
+                        + " Due Date is " + assignment.getDueDateString());
+            }
+            if (nDueDate < ntoday) {
+                // put to the
+                mReminder.listOverDue.add(assignment.assignmentName + " Due Date is " + assignment.getDueDateString());
+            }
+        }
+    }
 
 }

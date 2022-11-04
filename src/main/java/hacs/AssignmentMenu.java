@@ -11,12 +11,12 @@ import javax.swing.JDialog;
 
 abstract public class AssignmentMenu extends JDialog {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  abstract void showMenu(Assignment assignment, Person person);
+    abstract void showMenu(Assignment assignment, Person person);
 
-  public AssignmentMenu() {
-    setModal(true);
-    setSize(575, 330);
-  }
+    public AssignmentMenu() {
+        setModal(true);
+        setSize(575, 330);
+    }
 }

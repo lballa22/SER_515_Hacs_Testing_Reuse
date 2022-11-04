@@ -5,18 +5,18 @@
  * @version 1.0
  * @author mjfindler
  * @version 2.0
- *
- *          Update to Java 8
+ * <p>
+ * Update to Java 8
  */
 
 package hacs;
 
 public class UserInfoItem {
 
-	public enum UserType {
-		Student, Instructor
-	}
+    public enum UserType {
+        STUDENT, INSTRUCTOR
+    }
 
-	String strUserName;
-	UserType userType; // 0 : Student, 1: Instructor
+    String strUserName;
+    UserType userType; // 0 : Student, 1: Instructor
 }
